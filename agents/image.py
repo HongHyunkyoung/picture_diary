@@ -4,7 +4,6 @@ import requests
 from pathlib import Path
 from dotenv import load_dotenv
 from openai import OpenAI
-import fal_client
 
 load_dotenv()
 
@@ -28,6 +27,7 @@ def call_dalle(prompt:str, seed: int | None = None) -> str:
 
 def call_flux(prompt: str, seed: int | None = None) -> str:
     """FLUX schnell로 1장 생성, URL 반환. seed로 일관성 강화."""
+    import fal_client 
     result = fal_client.run(
         "fal-ai/flux/schnell",
         arguments={
@@ -38,15 +38,21 @@ def call_flux(prompt: str, seed: int | None = None) -> str:
     )
     return result["images"][0]["url"]
 
-def generate_image(prompt:str, model: str = "dalle", seed: int =42) -> str:
-    """모델 분기 함수. dalle 또는 flux 호출."""
+def generate_image(prompt: str, output_path: str, model: str = "dalle", seed: int = 42) -> str:
+    """이미지를 생성하고 output_path에 저장한 뒤 경로를 반환한다."""
     model = model.lower()
+    is_base64 = model == "dalle"
+
     if model == "dalle":
-        return call_dalle(prompt)
+        data = call_dalle(prompt)
     elif model == "flux":
-        return call_flux(prompt, seed=seed)
+        data = call_flux(prompt, seed=seed)
     else:
         raise ValueError(f"지원하지 않는 모델: {model}")
+
+    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+    save_image(data, Path(output_path), is_base64=is_base64)
+    return output_path
 
 def save_image(data: str, out_path: Path, is_base64: bool = False) -> None:
     """이미지 데이터를 파일로 저장한다."""
@@ -75,12 +81,13 @@ def batch_generate(scenes: list[dict], model: str, out_dir: Path) -> list[Path]:
         print(f"[생성 중] 장면 {scene_id}: {prompt_en[:40]}...")
         
         try:
-            seed = scene_id * 100
-            data = generate_image(full_prompt, model=model, seed=seed)
-            save_image(data, out_path, is_base64=is_base64)
-            saved.append(out_path)
+            result = generate_image(
+                prompt=full_prompt,
+                output_path=str(out_path),
+                model=model,
+            )
+            saved.append(Path(result))
             print(f"[저장 완료] {out_path}")
-            
         except Exception as e:
             print(f"[실패] 장면 {scene_id}: {e}")
             continue

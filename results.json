@@ -1,0 +1,32 @@
+{
+  "diary_first_line": "유튜브 쇼츠에서 백종원 선생님의 '초간단 믹서기 감자전' 영상을 본 게 화근이었다. \"참 쉽쥬?\"라는 말에 홀린 듯 주방으로 향했다. 싹트기 일보 직전인 감자 세 개를 깎을 때만 해도 주방의 지배자가 된 기분이었다.",
+  "scenes": [
+    {
+      "scene_id": 1,
+      "scene_kr": "주방으로 향하는 주인공의 모습",
+      "prompt_en": "Wide shot of a cheerful character heading towards the kitchen, eye-level angle, soft lighting, watercolor diary illustration, soft pastel palette, warm tones."
+    },
+    {
+      "scene_id": 2,
+      "scene_kr": "감자를 깎으며 느끼는 주인공의 자신감",
+      "prompt_en": "Medium shot of the character confidently peeling potatoes, low angle, rim lighting, watercolor diary illustration, soft pastel palette, warm tones."
+    },
+    {
+      "scene_id": 3,
+      "scene_kr": "믹서기에서 감자 퓨레가 터지는 순간",
+      "prompt_en": "Close-up of the character's shocked face as the blender explodes with potato puree, high angle, backlit lighting, watercolor diary illustration, soft pastel palette, warm tones."
+    },
+    {
+      "scene_id": 4,
+      "scene_kr": "타버린 감자전과 함께 웃고 있는 주인공",
+      "prompt_en": "Medium shot of the character laughing with a burnt potato pancake and a glass of makgeolli, eye-level angle, soft lighting, watercolor diary illustration, soft pastel palette, warm tones."
+    }
+  ],
+  "images": [
+    "outputs\\2026-05-30\\scene_1.png",
+    "outputs\\2026-05-30\\scene_2.png",
+    "outputs\\2026-05-30\\scene_3.png",
+    "outputs\\2026-05-30\\scene_4.png"
+  ],
+  "video": null
+}
