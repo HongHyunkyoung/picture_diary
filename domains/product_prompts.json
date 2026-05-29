@@ -1,0 +1,35 @@
+{
+  "domain": "product",
+  "version": "day5-self1",
+  "prompt_style": {
+    "shot": "close-up",
+    "angle": "eye-level",
+    "lighting": "studio lighting, soft shadows",
+    "lens_or_style": "50mm macro lens",
+    "mood": "clean, professional"
+  },
+  "scenes": [
+    {
+      "id": "scene_01",
+      "diary_sentence": "오늘 새 이어폰을 샀다.",
+      "visual_focus": "wireless earbuds",
+      "prompt_addons": [
+        "product photography",
+        "clean white background",
+        "soft drop shadows"
+      ],
+      "negative_prompt": "text, watermark, blurry, people"
+    },
+    {
+      "id": "scene_02",
+      "diary_sentence": "카페에서 따뜻한 커피를 마셨다.",
+      "visual_focus": "coffee cup with latte art",
+      "prompt_addons": [
+        "warm lighting",
+        "wooden table",
+        "cozy cafe atmosphere"
+      ],
+      "negative_prompt": "text, watermark, people, faces"
+    }
+  ]
+}

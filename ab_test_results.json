@@ -1,0 +1,19 @@
+{
+  "domain": "product",
+  "prompt": "wireless earbuds, close-up, eye-level, studio lighting, soft shadows, product photography, clean white background, soft drop shadows, clean, professional",
+  "seed_a": 42,
+  "seed_b": 137,
+  "n_calls": 3,
+  "a_latencies": [
+    15.117965399986133,
+    13.074307100032456,
+    11.837420099996962
+  ],
+  "b_latencies": [
+    10.522853999980725,
+    10.500548499985598,
+    14.160743799991906
+  ],
+  "p95_a": 15.118,
+  "p95_b": 14.161
+}

@@ -59,3 +59,49 @@
   - 인물: 불일관 (단발머리 여성이라는 특징은 유지되었으나, 장면마다 얼굴의 세부 데생이나 미세한 이목구비 스타일이 조금씩 달라짐)
 - 재시도한 장면: 없음 (자동화 파이프라인 실험의 순수성을 위해 수동 프롬프트 수정 없이 그대로 진행함)
 - Day 4 입력 가능 여부: 가능 (3번 장면에서 '믹서기' 대신 가스레인지 위 '냄비'가 그려지는 AI 간의 컨텍스트 왜곡/할루시네이션 현상이 발견되었으나, 자동화 데이터 파이프라인의 흐름 규격과 파일 생성은 100% 정상 작동하므로 다음 단계 진입 가능)
+
+## Day 4 self1 기록 (Mock 버전)
+
+- 동기 vs 비동기:
+  동기는 결과를 바로 기다리고,
+  비동기는 task_id를 받아 나중에 status/result로 확인한다.
+
+- 가드레일 4종:
+  Max Iter(반복 횟수), Timeout(대기 시간),
+  Predicate(완료 조건), Budget Cap(비용 상한)
+
+- Mock 모드로 실행: 실제 API 호출 없음, 비용 $0
+- task_id: kling_task_id.txt 참고
+- 실제 API로 전환 방법: agents/video.py의 MOCK = False
+- self2에서 할 것: status 폴링 구조 + result 수신 구조
+
+## Day 4 self2 기록 (Mock 버전)
+
+- 비동기 폴링 패턴:
+  Kling은 submit 직후 URL을 주지 않으므로
+  status 폴링 후 result를 받아야 한다.
+
+- 가드레일 적용:
+  check_max_iter + check_timeout → 루프 안전장치
+  check_predicate → 완료 판정 한 곳에서 관리
+
+- pipeline 인터페이스:
+  picture_diary_pipeline(diary_text, model, animate_first)
+  scene → image → video → results.json 4단계 체이닝
+
+- Mock 모드로 실행: 실제 API 호출 없음, 비용 $0
+- 실제 API 전환 방법: agents/video.py의 MOCK = False
+- Day 5에서 할 것: 도메인 응용 (제품/이모티콘/여행 중 선택)
+
+## Day 5 self1 기록
+
+- 선택 도메인: product
+- seed A/B: 42 / 137
+- A 호출 수: 3 / B 호출 수: 3
+- A 지연: 15.12초, 13.07초, 11.84초
+- B 지연: 10.52초, 10.50초, 14.16초
+- p95_a: 15.12초 / p95_b: 14.16초
+- p95_latency_s: 15.12  ← README에 옮길 값
+- cost_per_image: ~$0.04
+- total_cost_usd: ~$0.443
+- 다음 작업: README 운영 지표 표에 위 값 반영 후 GitHub push

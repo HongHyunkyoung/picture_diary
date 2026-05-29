@@ -2,23 +2,23 @@
   "scenes": [
     {
       "scene_id": 1,
-      "scene_kr": "주방에서 감자를 깎고 있는 주인공.",
-      "prompt_en": "Wide shot of the main character peeling potatoes in the kitchen, eye-level view, soft lighting."
+      "scene_kr": "주방에서 감자를 깎고 있는 주인공의 모습.",
+      "prompt_en": "Medium shot of the main character peeling potatoes in the kitchen, eye-level angle, soft lighting."
     },
     {
       "scene_id": 2,
-      "scene_kr": "믹서기가 멈추고 당황한 주인공의 모습.",
-      "prompt_en": "Medium shot of the main character looking surprised as the blender stops, low angle, rim lighting."
+      "scene_kr": "믹서기가 멈추자 당황하는 주인공의 표정.",
+      "prompt_en": "Close-up of the main character's surprised expression as the blender stops, low angle, backlit lighting."
     },
     {
       "scene_id": 3,
-      "scene_kr": "감자 퓨레가 튄 주방의 모습.",
-      "prompt_en": "Close-up of the kitchen wall splattered with potato puree, high angle, backlit lighting."
+      "scene_kr": "감자 사태로 벽과 얼굴이 감자 퓨레로 덮인 장면.",
+      "prompt_en": "Wide shot of the kitchen chaos with mashed potatoes on the walls and the character's face, high angle, rim lighting."
     },
     {
       "scene_id": 4,
-      "scene_kr": "탄 감자전을 잘라내며 웃고 있는 주인공.",
-      "prompt_en": "Medium shot of the main character cutting the burnt potato pancake and laughing, eye-level view, soft lighting."
+      "scene_kr": "탄 감자전을 보고 웃고 있는 주인공의 모습.",
+      "prompt_en": "Medium shot of the main character laughing while cutting the burnt edges of the potato pancake, eye-level angle, soft lighting."
     }
   ]
 }

@@ -5,6 +5,7 @@ import os
 import time
 from dotenv import load_dotenv
 import fal_client
+from pathlib import Path
 
 load_dotenv()
 
@@ -35,3 +36,40 @@ def submit_kling(image_url: str, prompt: str, duration: int = 5,) -> str:
     #     },
     # )
     # return handler.request_id
+
+def status_kling(request_id: str) -> str:
+    """Kling 작업 상태를 1회 조회하고 상태 문자열을 반환한다.
+        Mock 모드에서는 가짜 상태를 반환한다."""
+    if MOCK:
+        # Mock: 3번 호출 후 completed 반환 시뮬레이션
+        # 실제로는 매번 다른 상태가 온다
+        call_count_path = Path("mock_call_count.txt")
+        count = int(call_count_path.read_text()) if call_count_path.exists() else 0
+        count += 1
+        call_count_path.write_text(str(count))
+
+        if count >= 3:
+            print(f"[Mock] status_kling() → completed (호출 {count}회)")
+            return "completed"
+        else:
+            print(f"[Mock] status_kling() → IN_PROGRESS (호출 {count}회)")
+            return "IN_PROGRESS"
+
+    # 실제 버전
+    # import fal_client
+    # status_obj = fal_client.status(KLING_MODEL, request_id, with_logs=False)
+    # return status_obj.status
+def result_kling(request_id: str) -> str:
+    """
+    완료된 Kling 작업의 영상 URL을 반환한다.
+    Mock 모드에서는 가짜 URL을 반환한다.
+    """
+    if MOCK:
+        fake_url = f"https://mock.fal.ai/videos/{request_id}.mp4"
+        print(f"[Mock] result_kling() → {fake_url}")
+        return fake_url
+
+    # 실제 버전
+    # import fal_client
+    # result = fal_client.result(KLING_MODEL, request_id)
+    # return result["video"]["url"]

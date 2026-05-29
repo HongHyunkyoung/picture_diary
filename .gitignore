@@ -11,3 +11,6 @@ wheels/
 .env
 outputs/
 .DS_Store
+*.png
+*.mp4
+*.pyc
