@@ -48,6 +48,7 @@ python pipeline.py
 
 <!-- 대표 이미지 1장 경로 입력 -->
 
+<img width="500" height="500" alt="대표 이미지" src="https://github.com/user-attachments/assets/07ac804f-dd3c-4db0-8ea8-0a0f8011a1f3" />
 <!-- outputs/ 폴더가 .gitignore에 포함된 경우 아래처럼 설명 -->
 
 로컬 실행 시 `outputs/{날짜}/` 폴더에 scene\_1.png \~ scene\_4.png가 생성됩니다.
