@@ -66,5 +66,4 @@
 
 
 
-https://github.com/HongHyunkyoung/picture\_diary\_
-
+https://github.com/HongHyunkyoung/picture_diary
